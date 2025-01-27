@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMM_MV_Product.a CMakeFiles/MM_MV_Product.dir/MM_MV_Product.cpp.o
+/usr/bin/ranlib libMM_MV_Product.a
