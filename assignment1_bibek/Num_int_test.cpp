@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <iostream>
-#define pi_val 3.14159265358979323846 /* value of pi */
+// #define pi_val 3.14159265358979323846 /* value of pi */
 #include "int_rule.hpp"
 
 class Polynomial : public ScalarFunction<double> { //class Polynomial derived from ScalarFunction
@@ -40,13 +40,13 @@ int test_constant_function3() {
     auto rule = QuadratureType<double>::chebyshev1(4); // 4 point chebyshev1 rule for a constant function
     Polynomial f({1.0}); // f(x) = 1/sqrt(1-x^2)
     double result = rule.integrate(f, -1.0, 1.0);
-    return std::abs(result - pi_val) < 1e-6 ? 0 : 1;
+    return std::abs(result - M_PI) < 1e-6 ? 0 : 1;
 }
 int test_constant_function4() {
     auto rule = QuadratureType<double>::chebyshev2(4); // 4 point chebyshev1 rule for a constant function
     Polynomial f({1.0}); // f(x) = 1*sqrt(1-x^2)
     double result = rule.integrate(f, -1.0, 1.0);
-    return std::abs(result - pi_val/2.0) < 1e-4 ? 0 : 1; // is not passing
+    return std::abs(result - M_PI/2.0) < 1e-4 ? 0 : 1; // is not passing
 }
 
 int test_linear_function1() {
@@ -95,14 +95,14 @@ int test_quadratic_function3() {
     auto rule = QuadratureType<double>::chebyshev1(8); // 8 point chebyshev1 rule for a quadratic function
     Polynomial f({0.0, 0.0, 1.0}); // f(x) = x^2/sqrt(1-x^2)
     double result = rule.integrate(f, -1.0, 1.0);
-    return std::abs(result - pi_val/2.0) < 1e-4 ? 0 : 1; //is not passing
+    return std::abs(result - M_PI/2.0) < 1e-4 ? 0 : 1; //is not passing
 }
 
 int test_quadratic_function4() {
     auto rule = QuadratureType<double>::chebyshev2(8); // 8 point chebyshev2 rule for a quadratic function
     Polynomial f({0.0, 0.0, 1.0}); // f(x) = x^2*sqrt(1-x^2)
     double result = rule.integrate(f, -1.0, 1.0);
-    return std::abs(result - pi_val/8.0) < 1e-6 ? 0 : 1; // is not passing
+    return std::abs(result - M_PI/8.0) < 1e-6 ? 0 : 1; // is not passing
 }
 
 int main() {

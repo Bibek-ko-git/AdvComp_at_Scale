@@ -5,7 +5,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <iostream>
-#define pi_val 3.14159265358979323846 /* value of pi */
+// #define pi_val 3.14159265358979323846 /* value of pi */
 
 template<typename T>
 class ScalarFunction {
@@ -108,8 +108,8 @@ class QuadratureType{
         std::vector<T> weights(n, T{0});
         std::vector<T> points(n, T{0});
         for (size_t i = 0; i < n; i++) {
-            weights[i] = pi_val/ n;
-            points[i] = std::cos((2*i-1.0 * pi_val) / (2*n));
+            weights[i] = M_PI/ n;
+            points[i] = std::cos((2*i-1.0 * M_PI) / (2*n));
         } // Taking the first case for the chebyshev-gauss quadrature rule
         return IntegrationRule<T>{weights, points};
     }
@@ -118,8 +118,8 @@ class QuadratureType{
         std::vector<T> weights(n, T{0});
         std::vector<T> points(n, T{0});
         for (size_t i = 0; i < n; i++) {
-            weights[i] = (pi_val/(n+1.0))*std::sin((i*pi_val)/(n+1.0))*std::sin((i*pi_val)/(n+1.0));
-            points[i] = std::cos((i * pi_val) / (n+1.0));
+            weights[i] = (M_PI/(n+1.0))*std::sin((i*M_PI)/(n+1.0))*std::sin((i*M_PI)/(n+1.0));
+            points[i] = std::cos((i * M_PI) / (n+1.0));
         } // Taking the second case for the chebyshev-gauss quadrature rule
         return IntegrationRule<T>{weights, points};
     }

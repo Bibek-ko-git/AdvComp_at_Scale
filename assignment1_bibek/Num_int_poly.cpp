@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <sstream>
-#define pi_val 3.14159265358979323846 /* value of pi */
+// #define pi_val 3.14159265358979323846 /* value of pi */
 #include "int_rule.hpp"
 
 class Polynomial : public ScalarFunction<double> { //class Polynomial derived from ScalarFunction
@@ -42,6 +42,9 @@ int main(int argc, char* argv[]) {
         std::cout << "Enter integration limits (a b): ";
         std::cin >> a;
         std::cin >> b;
+	if (a >= b) {
+            throw std::invalid_argument("Invalid integration limits: a must be less than b \n");
+        }  // checking if the limits are valid
 
         unsigned int n;
         std::cout << "Enter the type of quadrature rule you want to use: \n 1. Gauss Legendre \n 2. Gauss Lobatto \n 3. Chebyshev case 1 \n 4. Chebyshev case 2 \n";
